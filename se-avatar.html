@@ -1,0 +1,136 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-image/iron-image.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <se-avatar></se-avatar>
+
+@demo
+-->
+<dom-module id="se-avatar">
+
+  <style>
+    :host {
+      display: block;
+      position: relative;
+    }
+
+    .fill {
+      width:100%;
+      height:100%;
+    }
+
+    .round {
+      border-radius: 50%;
+    }
+
+    .absolute-center {
+
+      /* Internet Explorer 10 */
+      display:-ms-flexbox;
+      -ms-flex-pack:center;
+      -ms-flex-align:center;
+
+      /* Firefox */
+      display:-moz-box;
+      -moz-box-pack:center;
+      -moz-box-align:center;
+
+      /* Safari, Opera, and Chrome */
+      display:-webkit-box;
+      -webkit-box-pack:center;
+      -webkit-box-align:center;
+
+      /* W3C */
+      display:box;
+      box-pack:center;
+      box-align:center;
+
+    }
+
+    :host #in {
+      background-color: var(--accent-color, lightgray);
+      color: var(--text-primary-color, white);
+    }
+  </style>
+
+  <template>
+    <iron-image id="img" hidden$="[[!_hasImg]]" class="fill round" preload fade sizing="cover" src="[[src]]"></iron-image>
+    <div id="in" hidden$="[[_hasImg]]" class="fill round absolute-center" style$="[[_initialsTextStyle]]">[[_initials]]</div>
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'se-avatar',
+
+    properties: {
+
+      /**
+       * The URL of an image.
+       */
+      src: {
+        type: String,
+        value: ''
+      },
+
+      _hasImg: {
+        type: Boolean,
+        computed: '_computeHasImg(src)'
+      },
+
+      name: {
+        type: String,
+        value: ''
+      },
+
+      _initials: {
+        type: String,
+        computed: '_computeInitials(name)'
+      },
+
+      _initialsTextStyle: {
+        type: String,
+        value: ''
+      },
+
+    },
+
+    attached: function() {
+      this._initialsTextStyle += 'font-size: ' + Math.floor(parseInt(this.style.height, 10)/2) + 'px;';
+    },
+
+    _computeHasImg: function(val) {
+      if (undefined !== val && val.length > 0) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    },
+
+    /**
+     * Take the initials from a name
+     * Thanks https://github.com/Sitebase/u-avatar
+     * @param {string} name
+     * @return {string}
+     */
+    _computeInitials: function(name) {
+      var parts = name.split(' ');
+      var initials = '';
+      for(var i = 0 ; i < parts.length ; i++) {
+        initials += parts[i].substr(0, 1).toUpperCase();
+      }
+      return initials;
+    },
+
+
+  });
+
+</script>
