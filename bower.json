@@ -2,21 +2,21 @@
   "name": "se-avatar",
   "version": "1.0.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Sylvain Emery <github@emery.sc>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "A material design (ok, round) avatar polymer element",
   "keywords": [
     "web-component",
     "web-components",
-    "polymer"
+    "polymer",
+    "avatar"
   ],
   "main": "se-avatar.html",
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/sylvainemery/se-avatar/",
   "ignore": [
     "/.*",
-    "/test/",
-    "/demo/"
+    "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^1.0.0",
