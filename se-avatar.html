@@ -143,10 +143,12 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
      * @return {string}
      */
     _computeInitials: function(name) {
-      var parts = name.split(' ');
       var initials = '';
-      for(var i = 0 ; i < parts.length ; i++) {
-        initials += parts[i].substr(0, 1).toUpperCase();
+      if (undefined !== name && name.length > 0) {
+        var parts = name.split(' ');
+        for(var i = 0 ; i < parts.length ; i++) {
+          initials += parts[i].substr(0, 1).toUpperCase();
+        }
       }
       return initials;
     },
