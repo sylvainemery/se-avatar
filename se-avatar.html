@@ -75,7 +75,7 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
   </style>
 
   <template>
-    <iron-image id="img" hidden$="[[!_hasImg]]" class="fill round" preload fade loading="{{loading}}" sizing="cover" src="[[src]]"></iron-image>
+    <iron-image id="img" hidden$="[[!_hasImg]]" class="fill round" preload fade loaded="{{loaded}}" sizing="cover" src="[[src]]"></iron-image>
     <div id="in" hidden$="[[_hasImg]]" class="fill round absolute-center" style$="[[_initialsTextStyle]]">[[_initials]]</div>
   </template>
 
@@ -110,7 +110,7 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
        */
       _hasImg: {
         type: Boolean,
-        computed: '_computeHasImg(src, loading)'
+        computed: '_computeHasImg(src, loaded)'
       },
 
       /**
@@ -139,11 +139,11 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
     /**
      * Returns whether or not there is a picture provided and loaded.
      * @param {string} imgSrc
-     * @param {string} loading
+     * @param {string} loaded
      * @return {boolean}
      */
-    _computeHasImg: function(imgSrc, loading) {
-      if (undefined !== imgSrc && imgSrc.length > 0 && !loading) {
+    _computeHasImg: function(imgSrc, loaded) {
+      if (undefined !== imgSrc && imgSrc.length > 0 && loaded) {
         return true;
       }
       else {
