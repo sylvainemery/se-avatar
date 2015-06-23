@@ -70,7 +70,7 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
   </style>
 
   <template>
-    <iron-image id="img" hidden$="[[!_hasImg]]" class="fill round" preload fade sizing="cover" src="[[src]]"></iron-image>
+    <iron-image id="img" hidden$="[[!_hasImg]]" class="fill round" preload fade loading="{{loading}}" sizing="cover" src="[[src]]"></iron-image>
     <div id="in" hidden$="[[_hasImg]]" class="fill round absolute-center" style$="[[_initialsTextStyle]]">[[_initials]]</div>
   </template>
 
@@ -92,17 +92,20 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
         value: ''
       },
 
-      _hasImg: {
-        type: Boolean,
-        computed: '_computeHasImg(src)'
-      },
-
       /**
        * The name of the person.
        */
       name: {
         type: String,
         value: ''
+      },
+
+      /**
+       * Is true if an URL has been provided.
+       */
+      _hasImg: {
+        type: Boolean,
+        computed: '_computeHasImg(src, loading)'
       },
 
       /**
@@ -128,8 +131,14 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
       this._initialsTextStyle += 'font-size: ' + Math.floor(parseInt(this.style.height, 10)/2) + 'px;';
     },
 
-    _computeHasImg: function(val) {
-      if (undefined !== val && val.length > 0) {
+    /**
+     * Returns whether or not there is a picture provided and loaded.
+     * @param {string} imgSrc
+     * @param {string} loading
+     * @return {boolean}
+     */
+    _computeHasImg: function(imgSrc, loading) {
+      if (undefined !== imgSrc && imgSrc.length > 0 && !loading) {
         return true;
       }
       else {
