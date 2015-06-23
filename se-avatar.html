@@ -26,7 +26,7 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
 
   <style>
     :host {
-      display: block;
+      display: inline-block;
       position: relative;
     }
 
@@ -66,6 +66,11 @@ Inspired by https://github.com/Sitebase/u-avatar and https://github.com/expandjs
     :host #in {
       background-color: var(--accent-color, lightgray);
       color: var(--text-primary-color, white);
+      font-family: var(--text-primary-font-family, sans-serif);
+    }
+
+    :host #img {
+      background-color: var(--accent-color, lightgray);
     }
   </style>
 

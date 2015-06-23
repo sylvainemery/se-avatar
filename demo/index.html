@@ -5,6 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>se-avatar Demo</title>
+    <style is="custom-style">
+    :root {
+      --text-primary-font-family: Helvetica, Arial, sans-serif;
+    }
+    </style>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../se-avatar.html">
   </head>
@@ -12,9 +17,11 @@
 
     <p>An example of <code>&lt;se-avatar&gt;</code>:</p>
 
-    <se-avatar style="width: 64px; height: 64px;" name="Success Kid" src="successkid.png"></se-avatar>
+    <div><p>With picture + name:</p><se-avatar style="width: 56px; height: 56px;" name="Success Kid" src="successkid.png"></se-avatar></div>
 
-    <se-avatar style="width: 64px; height: 64px;" name="Success Kid"></se-avatar>
+    <div><p>With broken picture + name:</p><se-avatar style="width: 56px; height: 56px;" name="Success Kid" src="succeesskid.png"></se-avatar></div>
+
+    <div><p>With name only:</p><se-avatar style="width: 56px; height: 56px;" name="Success Kid"></se-avatar></div>
 
   </body>
 </html>
