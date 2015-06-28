@@ -1,13 +1,5 @@
 <!doctype html>
-<!--
-@license
-Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -22,31 +14,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <body>
 
     <!-- You can use the document as a place to set up your fixtures. -->
-    <se-avatar></se-avatar>
+    <se-avatar style="width: 56px; height: 56px;" name="Success Kid" src="successkid.png"></se-avatar>
 
     <script>
       var myEl = document.querySelector('se-avatar');
 
       suite('<se-avatar>', function() {
 
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Dimitri Glazkov');
-          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+        test('defines the "src" property', function() {
+          assert.equal(myEl.src, 'successkid.png');
         });
 
-        test('says hello', function() {
-          assert.equal(myEl.sayHello(), 'se-avatar says, Hello World!');
-
-          var greetings = myEl.sayHello('greetings Earthlings');
-          assert.equal(greetings, 'se-avatar says, greetings Earthlings');
-        });
-
-        test('fires lasers', function(done) {
-          myEl.addEventListener('se-avatar-lasers', function(event) {
-            assert.equal(event.detail.sound, 'Pew pew!');
-            done();
-          });
-          myEl.fireLasers();
+        test('defines the "name" property', function() {
+          assert.equal(myEl.name, 'Success Kid');
         });
 
       });
